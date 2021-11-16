@@ -58,3 +58,7 @@
   cursor: pointer;
   padding: 10px;
 }
+.profile__div__info label span {
+  color: green;
+  font-size: smaller;
+}
