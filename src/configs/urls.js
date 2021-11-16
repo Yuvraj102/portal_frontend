@@ -1,4 +1,5 @@
-const baseLink = "http://localhost:5000/api/v1/";
+const baseLink = "https://portalbackend44.herokuapp.com/api/v1/";
+// "http://localhost:5000/api/v1/";
 
 export const getloginUrlLink = baseLink + "user/getGoogleLink";
 
