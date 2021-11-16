@@ -19,6 +19,7 @@ function Profile() {
     collegeName: user ? user.college : "fetching...",
     deptName: user ? user.department : "fetching...",
     bio: user ? user.bio : "fetching...",
+    desig: user ? user.designation : "fetching...",
   });
   const editClicked = (e) => {
     selectTag.current.disabled = false;
@@ -122,7 +123,7 @@ function Profile() {
             ref={deptTag}
           />
           <label>
-            Designation <span>{oldValues.deptName}</span>
+            Designation <span>{oldValues.desig}</span>
           </label>
           <select disabled ref={selectTag}>
             <option value="student">Student</option>
