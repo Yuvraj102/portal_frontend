@@ -102,23 +102,22 @@ function Profile() {
           >
             {oldValues.bio}
           </textarea>
-          <label>College Name</label>
+          <label>College Name {oldValues.collegeName}</label>
           <input
             placeholder="not mentioned (enter name only 50 characters max allowed)"
             // value={oldValues.collegeName}
             readOnly
             ref={collegeTag}
-          >
-            {oldValues.collegeName}
-          </input>
-          <label>Department</label>
+          />
+
+          <label>Department {oldValues.deptName}</label>
           <input
             placeholder="dept for example computer, mechanical only 30 characters allowed"
-            value={oldValues.deptName}
+            // value={oldValues.deptName}
             readOnly
             ref={deptTag}
           />
-          <label>Designation</label>
+          <label>Designation {oldValues.deptName}</label>
           <select disabled ref={selectTag}>
             <option value="student">Student</option>
             <option value="teacher">Teacher</option>
