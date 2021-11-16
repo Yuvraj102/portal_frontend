@@ -21,6 +21,7 @@
 }
 .question__right {
   padding: 4px;
+  overflow: scroll;
 }
 .question__right__top > h1 {
   font-family: "Montserrat", sans-serif;
