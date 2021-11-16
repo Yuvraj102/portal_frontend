@@ -63,7 +63,7 @@ function Feed() {
           </div>
         </div>
       </div>
-      <Questions questions={questions} />
+      <Questions questions={questions} setQuestions={setQuestions} />
     </>
   );
 }

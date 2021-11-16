@@ -1,2 +1,9 @@
 .app {
 }
+.creator {
+  text-decoration: none;
+  text-align: center;
+  padding: 20px;
+  color: crimson;
+  display: block;
+}

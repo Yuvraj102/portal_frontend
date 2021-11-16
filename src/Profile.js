@@ -4,9 +4,11 @@ import toyFaceImage from "./assets/toy_face.jpg";
 import WarningComponent from "./components/WarningComponent";
 import { useStateValue } from "./context/StateProvider";
 import { updateUserInDb } from "./configs/networkManager";
+import { useHistory } from "react-router-dom";
 
 function Profile() {
   const [{ user, token }, dispatch] = useStateValue();
+  const history = useHistory();
   const saveBtn = useRef();
   const selectTag = useRef();
   const collegeTag = useRef();
@@ -66,11 +68,17 @@ function Profile() {
       setShwWarning(true);
     }
   };
+  const logout = () => {
+    history.replace("/");
+  };
   return (
     <div className="profile">
       <h1>PROFILE</h1>
       <button className="editButton" onClick={editClicked}>
         Edit
+      </button>
+      <button className="logoutButton" onClick={logout}>
+        Logout
       </button>
       <button ref={saveBtn} className="editButton" hidden onClick={saveClicked}>
         save

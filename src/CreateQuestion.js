@@ -3,12 +3,15 @@ import "./CreateQuestion.css";
 import { Link } from "react-router-dom";
 import WarningComponent from "./components/WarningComponent";
 import { useStateValue } from "./context/StateProvider";
-import { createComment } from "./configs/networkManager";
+import { createComment, createQuestion } from "./configs/networkManager";
+import { useHistory } from "react-router-dom";
 
 function CreateQuestion({ reply, postId, setComments }) {
   const [title, setTitle] = useState(0);
+  const history = useHistory();
   const [{ token }, dispatch] = useStateValue();
   const submitBtn = useRef();
+
   const titleFieldChanged = (e) => {
     const titleValue = e.target.value;
     setTitle(titleValue.length);
@@ -23,22 +26,49 @@ function CreateQuestion({ reply, postId, setComments }) {
   };
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    const textarea = event.target.body_text;
+    const title = event.target.title_text;
     if (reply) {
       // this is reply not new question, so create a reply
       // console.log(event.target.body_text.value);
-      const textarea = event.target.body_text;
+
       if (textarea.value) {
         let newComment = await createComment(postId, textarea.value, token);
-        console.log("new created comment", newComment);
+        // console.log("new created comment", newComment);
         if (newComment) {
+          alert("posted 👍");
           setComments((prevComments) => {
             // console.log("prev Comments:", prevComments);
-            alert("posted 👍");
+
             return [...prevComments, newComment];
           });
         }
       }
+    } else {
+      // create question page
+      const titleValue = title.value;
+      const bodyValue = textarea.value;
+      if (titleValue && bodyValue) {
+        // create post
+        const createdQuestion = await createQuestion(
+          titleValue,
+          bodyValue,
+          token
+        );
+        console.log("requested create post:", titleValue, bodyValue);
+        if (createQuestion) {
+          // add to questions state
+          history.replace("/feed");
+        } else {
+          alert("there was some issue creating question");
+        }
+
+        // console.log(token);
+      } else {
+        alert("fill all the fields");
+      }
     }
+    textarea.value = "";
   };
   return (
     <div className="createQuestion">
@@ -56,6 +86,7 @@ function CreateQuestion({ reply, postId, setComments }) {
                 required
                 placeholder="Enter title less than 200 characters"
                 onChange={titleFieldChanged}
+                name="title_text"
               ></input>
             </>
           )}
@@ -72,7 +103,7 @@ function CreateQuestion({ reply, postId, setComments }) {
           </button>
         </form>
       </div>
-      <Link to="/">Go Back to Home</Link>
+      <Link to={token ? "/feed" : "/"}>Go Back </Link>
     </div>
   );
 }

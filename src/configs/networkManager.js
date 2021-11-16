@@ -4,6 +4,8 @@ import {
   getCommentsOnPostLink,
   getCreatePostLink,
   getUpdateUserLink,
+  getCreateQuestionLink,
+  getVoteLink,
 } from "./urls";
 
 export const getAllQuestions = async (token) => {
@@ -74,6 +76,59 @@ export const updateUserInDb = async (data, token) => {
     return updatedUser.data.userToSend;
   } catch (err) {
     alert("err updating user");
+    console.log(err);
+    return null;
+  }
+};
+
+export const createQuestion = async (title, body, token) => {
+  const options = {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    data: JSON.stringify({
+      title: title,
+      body: body,
+    }),
+    url: getCreateQuestionLink,
+  };
+  try {
+    const createdPost = await axios(options);
+    return createdPost.data.savedPost;
+  } catch (err) {
+    alert("err creating post");
+    console.log(err);
+    return null;
+  }
+};
+
+export const voteQuestion = async (upvote, downvote, postId, token) => {
+  let vote = "";
+  if (upvote) {
+    vote = "upvote";
+  } else {
+    vote = "downvote";
+  }
+  let dataToSend = {
+    id: postId,
+  };
+  dataToSend[vote] = true;
+  const options = {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    data: JSON.stringify(dataToSend),
+    url: getVoteLink,
+  };
+  try {
+    const updatedPost = await axios(options);
+    return updatedPost.data.updatedPost;
+  } catch (err) {
+    alert("err creating post");
     console.log(err);
     return null;
   }

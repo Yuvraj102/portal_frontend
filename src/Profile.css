@@ -44,7 +44,17 @@
   color: #1b7ef6;
   border: none;
   background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
 }
 .counter {
   color: orange;
+}
+.logoutButton {
+  padding: 3px;
+  color: red;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
 }

@@ -12,3 +12,7 @@ export const getCommentsOnPostLink = baseLink + "comment/getCommentsForPost/";
 export const getCreatePostLink = baseLink + "comment/createComment";
 
 export const getUpdateUserLink = baseLink + "user/updateUser";
+
+export const getCreateQuestionLink = baseLink + "question/create";
+
+export const getVoteLink = baseLink + "question/votePost";
