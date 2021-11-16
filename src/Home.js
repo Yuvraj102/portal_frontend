@@ -15,7 +15,7 @@ function Home() {
     const token = queryArgs[1]?.split("=")[1];
     if (status && token) {
       // take them to feed
-      history.replace(`/feed${search}`);
+      history.push(`/feed${search}`);
     }
   }, []);
 
