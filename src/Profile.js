@@ -105,14 +105,14 @@ function Profile() {
           <label>College Name</label>
           <input
             placeholder="not mentioned (enter name only 50 characters max allowed)"
-            // value={oldValues.collegeName}
+            value={oldValues.collegeName}
             readOnly
             ref={collegeTag}
           />
           <label>Department</label>
           <input
             placeholder="dept for example computer, mechanical only 30 characters allowed"
-            // value={oldValues.deptName}
+            value={oldValues.deptName}
             readOnly
             ref={deptTag}
           />

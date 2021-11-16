@@ -14,7 +14,7 @@ function Home() {
     const status = queryArgs[0]?.split("=")[1];
     const token = queryArgs[1]?.split("=")[1];
     if (status && token) {
-      // take them to feed
+      // take them to signin
       history.push(`/signin${search}`);
     }
   }, []);
