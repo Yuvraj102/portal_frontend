@@ -62,3 +62,10 @@
   color: green;
   font-size: smaller;
 }
+
+@media only screen and (max-width: 400px) {
+  .profile__div {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}
