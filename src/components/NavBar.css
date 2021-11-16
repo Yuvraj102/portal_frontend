@@ -1,0 +1,30 @@
+.Navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  background-image: linear-gradient(to right bottom, #68e5fa, #61a9f8, #6ef9e8);
+}
+.Navbar h1 {
+  color: white;
+}
+.Navbar div {
+  display: flex;
+  align-items: center;
+}
+.ask {
+  padding: 7px;
+  border: 2px solid #1b7ef6;
+  color: #1b7ef6;
+  margin: 0px 7px;
+  text-decoration: none;
+  border-radius: 13px;
+}
+.Navbar div img {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+}
+.Navbar > a {
+  text-decoration: none;
+}

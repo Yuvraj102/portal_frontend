@@ -1,0 +1,39 @@
+.createQuestion__box {
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 7px;
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+}
+.createQuestion__box {
+  padding: 13px;
+}
+.createQuestion__box form {
+  display: flex;
+  flex-direction: column;
+}
+.createQuestion__box form input,
+.createQuestion__box form textarea,
+.createQuestion__box form label {
+  margin: 4px;
+  padding: 4px;
+}
+.createQuestion__box form label span {
+  color: orange;
+}
+.createQuestion__box form button {
+  padding: 10px;
+  background-color: #1b7ef6;
+  color: white;
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+}
+.createQuestion > a {
+  margin: 10px;
+  text-decoration: none;
+  color: #1b7ef6;
+  font-weight: bold;
+  font-style: italic;
+  display: block;
+}

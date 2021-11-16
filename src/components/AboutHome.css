@@ -1,0 +1,27 @@
+.aboutHome {
+  font-family: "Montserrat", sans-serif;
+  background-color: #b7fcfc;
+  /* max-width: 100vw; */
+  margin: auto;
+  text-align: center;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  margin-top: -80px;
+  padding-top: 50px;
+}
+.aboutHome > h1 {
+  color: #1b7ef6;
+}
+.aboutHome > p {
+  /* padding-top: 30px; */
+  padding: 30px 80px;
+  line-height: 25px;
+}
+
+@media only screen and (max-width: 720px) {
+  .aboutHome > p {
+    /* padding-top: 30px; */
+    padding: 30px 60px;
+    line-height: 25px;
+  }
+}

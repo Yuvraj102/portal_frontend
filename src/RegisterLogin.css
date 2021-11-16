@@ -1,0 +1,71 @@
+.registerLogin {
+  width: 100vw;
+  min-height: 100vh;
+  background-image: linear-gradient(to right bottom, #68e5fa, #61a9f8, #6ef9e8);
+  display: grid;
+  place-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.registerLogin_box {
+  background-color: #bfe8f8;
+  padding: 65px;
+  border-radius: 30px;
+  display: flex;
+  width: 65%;
+}
+.registerLogin_box_image > img {
+  height: 300px;
+}
+.registerLogin_box_cred {
+  margin: 0px 10px;
+  text-align: center;
+}
+.registerLogin_box_cred > a {
+  /* background: url("./assets/google.svg"); */
+  /* width: 150px;
+  height: 50px; */
+  border-radius: 10px;
+  padding: 3px;
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 65%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.registerLogin_box_cred > a > img {
+  height: 50px;
+}
+.registerLogin_box_cred > h1 {
+  color: #1b7ef6;
+  padding: 60px 0 10px 0;
+  margin-bottom: 7px;
+}
+.registerLogin_box_cred > p {
+  background-color: rgba(252, 245, 95, 0.6);
+  padding: 10px;
+  border-radius: 18px;
+  line-height: 25px;
+}
+@media only screen and (max-width: 720px) {
+  .registerLogin_box {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .registerLogin_box {
+    flex-direction: column;
+
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    width: 90%;
+  }
+  .registerLogin_box_cred > a > img {
+    height: 40px;
+  }
+}

@@ -1,9 +1,14 @@
 import React from "react";
+import AboutHome from "./components/AboutHome";
+import FirstBannerHome from "./components/FirstBannerHome";
+import TestimonialsHome from "./components/TestimonialsHome";
 
 function Home() {
   return (
     <div>
-      <h2>Home page here</h2>
+      <FirstBannerHome />
+      <AboutHome />
+      <TestimonialsHome />
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.questions {
+  font-family: "Montserrat", sans-serif;
+  width: 90%;
+  margin: auto;
+}
+.questions h1 {
+  color: #1b7ef6;
+  padding: 10px 10px;
+  font-size: x-large;
+  font-weight: 700;
+}

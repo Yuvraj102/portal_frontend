@@ -1,0 +1,64 @@
+.firstBanner {
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  background-image: linear-gradient(to right bottom, #68e5fa, #61a9f8, #6ef9e8);
+}
+.firstBanner__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.firstBanner__header a {
+  text-decoration: none;
+  font-weight: 400;
+}
+.firstBanner__header a h3 {
+  font-weight: 600;
+  color: #1b7ef6;
+  font-size: large;
+  border: 2px solid #1b7ef6;
+  border-radius: 17px;
+  padding: 7px 10px;
+}
+.firstBanner__header > h1 {
+  color: white;
+  font-weight: bolder;
+}
+
+.firstBanner__main {
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.firstBanner__main__info > h1 {
+  color: white;
+}
+.greatCommunity {
+  color: #1b7ef6 !important;
+}
+.firstBanner__main__info > p {
+  color: white;
+}
+.firstBanner__main__imageDiv > img {
+  height: 60vh;
+}
+.firstBanner__main__info > a > h3 {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  border: 2px solid white;
+  background-color: #1b7ef6;
+  border-radius: 17px;
+  padding: 7px 10px;
+  font-weight: 600;
+  font-size: large;
+  margin: 10px;
+}
+/* responsive */
+/* 720px */
+@media only screen and (max-width: 720px) {
+  .firstBanner__main {
+    flex-direction: column-reverse;
+  }
+}
