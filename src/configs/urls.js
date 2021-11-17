@@ -7,7 +7,7 @@ export const getAllQuestionsLink = baseLink + "question/getAllQuestions";
 
 export const getUserFromTokenLink = baseLink + "user/getMe";
 
-// add /id while using
+// add /id while  using
 export const getCommentsOnPostLink = baseLink + "comment/getCommentsForPost/";
 
 export const getCreatePostLink = baseLink + "comment/createComment";
