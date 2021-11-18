@@ -19,7 +19,7 @@ function FirstBannerHome() {
           <h1 className="greatCommunity">GREAT COMMUNITY</h1>
           <p>
             portal is a online platform for students like you ,engage
-            ,collaborate ,particiapte, Make sure your signin we hope to see you
+            ,collaborate ,particiapte, Make sure you signin we hope to see you
             on the other side
           </p>
           <Link to="signin">
