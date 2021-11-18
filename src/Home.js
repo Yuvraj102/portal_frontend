@@ -17,6 +17,7 @@ function Home() {
       // take them to signin
       history.push(`/signin${search}`);
     }
+    console.log("environment:", process.env.NODE_ENV);
   }, []);
 
   return (
