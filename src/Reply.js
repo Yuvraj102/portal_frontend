@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import { getCommentsOnPost } from "./configs/networkManager";
 import { useStateValue } from "./context/StateProvider";
 
-function Reply() {
+function Reply({ fetchUserAndQuestion }) {
   const { search } = useLocation();
   const [{ token }, dispatch] = useStateValue();
   let [question, setQuestions] = useState({});
@@ -23,11 +23,14 @@ function Reply() {
     // console.log("comments:", comments);
     setComments(postComments);
     setQuestions(questionData);
+    // console.log("reply page question:", questionData);
   }, []);
+
   const { questionId } = useParams();
   return (
     <div className="reply">
       <Question
+        id={question?.id}
         title={question?.title}
         body={question?.body}
         upvotes={question?.upvotes}
@@ -36,6 +39,7 @@ function Reply() {
         comments={[]}
         dateOfPosting={question?.dateOfPosting}
         renderFull
+        fetchUserAndQuestion={fetchUserAndQuestion}
       />
       <CreateQuestion reply postId={question.id} setComments={setComments} />
       <div className="reply_comments">

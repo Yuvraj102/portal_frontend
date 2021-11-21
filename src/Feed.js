@@ -4,42 +4,16 @@ import studentImage from "./assets/home_page.svg";
 import "./Feed.css";
 import Questions from "./Questions";
 import { useStateValue } from "./context/StateProvider";
-import axios from "./configs/axiosConfig";
-import { getUserFromTokenLink } from "./configs/urls";
-import { getAllQuestions } from "./configs/networkManager";
 
-function Feed() {
-  const [{ token, user }, dispatch] = useStateValue();
-  const [questions, setQuestions] = useState([]);
+function Feed({ hiddenDivRef, fetchUserAndQuestion }) {
+  const [{ token, user, feedQuestions }, dispatch] = useStateValue();
+
   useEffect(() => {
     // when we get the token ask for user info
     // console.log(token);
-    (async () => {
-      axios
-        .get(getUserFromTokenLink, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then(async ({ data }) => {
-          // console.log("user info:", data.user[0]);
-          if (data.user[0]) {
-            dispatch({
-              type: "USER_FETCHED",
-              user: data.user[0],
-            });
-            const questions = await getAllQuestions(token);
-            if (questions) {
-              setQuestions(questions);
-            }
-            console.log("questions:", questions);
-          } else {
-            alert("user not found make sure u login again");
-          }
-        })
-        .catch((err) => {
-          alert(`err getting user data @feed contact developer`);
-          console.log(err);
-        });
-    })();
+
+    fetchUserAndQuestion();
+    // setFeedQuestionsState(feedQuestions);
   }, []);
   return (
     <>
@@ -63,7 +37,12 @@ function Feed() {
           </div>
         </div>
       </div>
-      <Questions questions={questions} setQuestions={setQuestions} />
+      <Questions
+        // questions={feedQuestions}
+        questions={feedQuestions}
+        fetchUserAndQuestion={fetchUserAndQuestion}
+        hiddenDivRef={hiddenDivRef}
+      />
     </>
   );
 }

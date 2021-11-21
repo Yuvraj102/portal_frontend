@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Question.css";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
@@ -9,7 +9,6 @@ import { useStateValue } from "./../context/StateProvider";
 
 // this will be every single question
 function Question({
-  key,
   id,
   title,
   body,
@@ -19,14 +18,19 @@ function Question({
   comments,
   dateOfPosting,
   renderFull,
+  fetchUserAndQuestion,
 }) {
+  const [upVoteState, setupVoteState] = useState(upvotes);
+
+  const [downVoteState, setdownVoteState] = useState(downvotes);
+  // console.log("printing votes", upvotes, downvotes);
   const history = useHistory();
   const [{ token, user }, dispatch] = useStateValue();
   const upVoteRef = useRef();
   const downVoteRef = useRef();
   const redirectToQuestion = () => {
     history.push(
-      `/question/${key}?data=${JSON.stringify({
+      `/question/${id}?data=${JSON.stringify({
         id,
         title,
         body,
@@ -39,11 +43,15 @@ function Question({
     );
   };
   const upvoted = async () => {
-    console.log("upvoted");
     try {
       const updatedPost = await voteQuestion(true, false, id, token);
+      // console.log("upvote question updatedPost:", updatedPost);
+
       // add to questions state
-      upvotes += 1;
+      // upvotes += 1;
+      setupVoteState((_) => updatedPost.upVotes.length);
+      // console.log("printing upvotes:", upVoteState);
+      fetchUserAndQuestion(true);
       upVoteRef.current.style.color = "green";
       alert("post liked 👍");
     } catch (er) {
@@ -56,7 +64,9 @@ function Question({
     try {
       const updatedPost = await voteQuestion(false, true, id, token);
       // add to questions state
-      downvotes += 1;
+      // downvotes += 1;
+      setdownVoteState((_) => updatedPost.downVotes.length);
+      fetchUserAndQuestion(true);
       // make it green
       downVoteRef.current.style.color = "red";
       // console.log();
@@ -66,17 +76,20 @@ function Question({
       console.log(er);
     }
   };
+
   return (
     <div className="question">
       <div className="question__left">
         <ArrowUpwardIcon onClick={upvoted} className="upvote" ref={upVoteRef} />
-        <p>{upvotes}</p>
+        {/* <p>{upvotes}</p> */}
+        <p>{upVoteState}</p>
         <ArrowDownwardIcon
           onClick={downvoted}
           className="downvote"
           ref={downVoteRef}
         />
-        <p>{downvotes}</p>
+        {/* <p>{downvotes}</p> */}
+        <p>{downVoteState}</p>
       </div>
       <div className="question__right">
         <div className="question__right__top">

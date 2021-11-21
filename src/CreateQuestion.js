@@ -58,6 +58,10 @@ function CreateQuestion({ reply, postId, setComments }) {
         console.log("requested create post:", titleValue, bodyValue);
         if (createQuestion) {
           // add to questions state
+          dispatch({
+            type: "FEED_QUESTIONS_FETCHED",
+            questions: [],
+          });
           history.replace("/feed");
         } else {
           alert("there was some issue creating question");
