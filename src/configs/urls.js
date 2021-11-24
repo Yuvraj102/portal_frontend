@@ -11,7 +11,7 @@ export const getAllQuestionsLink = basleLink + "question/getAllQuestions";
 
 export const getUserFromTokenLink = basleLink + "user/getMe";
 
-// add /id while  using
+// add /id to param
 export const getCommentsOnPostLink = basleLink + "comment/getCommentsForPost/";
 
 export const getCreatePostLink = basleLink + "comment/createComment";
@@ -21,3 +21,8 @@ export const getUpdateUserLink = basleLink + "user/updateUser";
 export const getCreateQuestionLink = basleLink + "question/create";
 
 export const getVoteLink = basleLink + "question/votePost";
+// add /email to param
+export const getQuestionsForUserLink =
+  basleLink + "question/getQuestionsForUser/";
+// add /postID to param
+export const getDeletePostLink = basleLink + "question/deletePost/";

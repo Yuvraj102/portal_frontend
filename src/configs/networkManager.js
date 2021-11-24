@@ -6,6 +6,7 @@ import {
   getUpdateUserLink,
   getCreateQuestionLink,
   getVoteLink,
+  getDeletePostLink,
 } from "./urls";
 
 export const getAllQuestions = async (token) => {
@@ -131,5 +132,28 @@ export const voteQuestion = async (upvote, downvote, postId, token) => {
     alert("err creating post");
     console.log(err);
     return null;
+  }
+};
+
+export const deletePost = async (postId, token) => {
+  if (window.confirm("are u sure?")) {
+    try {
+      axios
+        .delete(getDeletePostLink + `${postId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(({ data }) => {
+          if (data) {
+            alert("post deleted successfully");
+          }
+        })
+        .catch((err) => {
+          alert("err deleting post ");
+          console.log(err);
+        });
+    } catch (err) {
+      alert("err deleting post axios");
+      console.log(err);
+    }
   }
 };

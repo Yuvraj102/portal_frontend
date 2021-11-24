@@ -39,6 +39,7 @@ function Feed({ hiddenDivRef, fetchUserAndQuestion }) {
       </div>
       <Questions
         // questions={feedQuestions}
+        questionstitle="CURATED FOR YOU.."
         questions={feedQuestions}
         fetchUserAndQuestion={fetchUserAndQuestion}
         hiddenDivRef={hiddenDivRef}

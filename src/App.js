@@ -11,16 +11,20 @@ import NavBar from "./components/NavBar";
 import CreateQuestion from "./CreateQuestion";
 import Reply from "./Reply";
 import axios from "./configs/axiosConfig";
-import { getloginUrlLink } from "./configs/urls";
-import { getUserFromTokenLink } from "./configs/urls";
+import {
+  getloginUrlLink,
+  getQuestionsForUserLink,
+  getUserFromTokenLink,
+} from "./configs/urls";
+// import {  } from "./configs/urls";
 import { getAllQuestions } from "./configs/networkManager";
 
 function App() {
   const [state, dispatch] = useStateValue();
   const [loginUrl, setLoginUrl] = useState(null);
   let hiddenDivRef = useRef();
-  const [{ token, user, feedQuestions }, _] = useStateValue();
-
+  const [{ token, user, feedQuestions, questionsForUser }, _] = useStateValue();
+  // console.log(token);
   const fetchUserAndQuestion = async (forceFetch = false) => {
     if (!user || !feedQuestions.length || forceFetch) {
       axios
@@ -57,7 +61,26 @@ function App() {
       console.log("not fetching");
     }
   };
-
+  // get questions for a user
+  const fetchQuestionsForUser = async (email, forceFetch = false) => {
+    if (!questionsForUser.length || forceFetch) {
+      axios
+        .get(`${getQuestionsForUserLink}${email}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then(async ({ data }) => {
+          const questionsForUser = data.questions;
+          dispatch({
+            type: "USER_QUESTIONS_FETCHED",
+            questions: questionsForUser,
+          });
+        })
+        .catch((err) => {
+          alert(`err getting user data pt questions`);
+          console.log(err);
+        });
+    }
+  };
   useEffect(() => {
     (async () => {
       axios
@@ -90,7 +113,12 @@ function App() {
               />
             </Route>
             <Route path="/profile" exact>
-              <Profile />
+              <Profile
+                hiddenDivRef={hiddenDivRef}
+                questionstitle="Questions By You.."
+                fetchQuestionsForUser={fetchQuestionsForUser}
+                fetchUserAndQuestion={fetchUserAndQuestion}
+              />
             </Route>
             <Route path="/ask" exact>
               <h1>Create Question</h1>

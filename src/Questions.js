@@ -3,19 +3,27 @@ import React, { useRef } from "react";
 import "./Questions.css";
 import Question from "./components/Question";
 import ReplayIcon from "@mui/icons-material/Replay";
-// import { useStateValue } from "./context/StateProvider";
+import { useStateValue } from "./context/StateProvider";
 
-function Questions({ questions, fetchUserAndQuestion, hiddenDivRef }) {
-  // const [{ feedQuestions }, dispatch] = useStateValue();
-
+function Questions({
+  questions,
+  fetchUserAndQuestion,
+  fetchQuestionsForUser,
+  hiddenDivRef,
+  questionstitle,
+  profileQuestions,
+}) {
+  const [{ user }, _] = useStateValue();
   const replayClicked = () => {
     fetchUserAndQuestion(true);
+    fetchQuestionsForUser && fetchQuestionsForUser(user.email, true);
     hiddenDivRef.current.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <div className="questions">
       <h1>
-        CURATED FOR YOU.. <ReplayIcon onClick={replayClicked} />
+        {questionstitle}{" "}
+        {/*profileQuestions ? null :*/ <ReplayIcon onClick={replayClicked} />}
       </h1>
       {/* {console.log("in questions comp", questions[0]?.upVotes.length)} */}
       {questions.map((el) => (
@@ -30,6 +38,7 @@ function Questions({ questions, fetchUserAndQuestion, hiddenDivRef }) {
           comments={[]}
           dateOfPosting={el.date}
           fetchUserAndQuestion={fetchUserAndQuestion}
+          fetchQuestionsForUser={fetchQuestionsForUser}
         />
       ))}
     </div>

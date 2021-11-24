@@ -1,13 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./Profile.css";
 import toyFaceImage from "./assets/toy_face.jpg";
 import WarningComponent from "./components/WarningComponent";
 import { useStateValue } from "./context/StateProvider";
 import { updateUserInDb } from "./configs/networkManager";
 import { useHistory } from "react-router-dom";
+import Questions from "./Questions";
 
-function Profile() {
-  const [{ user, token }, dispatch] = useStateValue();
+function Profile({
+  hiddenDivRef,
+  questionstitle,
+  fetchQuestionsForUser,
+  fetchUserAndQuestion,
+}) {
+  const [{ user, token, questionsForUser }, dispatch] = useStateValue();
   const history = useHistory();
   const saveBtn = useRef();
   const selectTag = useRef();
@@ -21,6 +27,9 @@ function Profile() {
     bio: user ? user.bio : "fetching...",
     desig: user ? user.designation : "fetching...",
   });
+  useEffect(() => {
+    fetchQuestionsForUser(user.email);
+  }, []);
   const editClicked = (e) => {
     selectTag.current.disabled = false;
     collegeTag.current.readOnly = false;
@@ -134,6 +143,15 @@ function Profile() {
           <img src={user ? user.profilePhotoUrl : toyFaceImage} />
         </div>
       </div>
+      {/* all questions by that user */}
+      <Questions
+        questionstitle={questionstitle}
+        questions={questionsForUser}
+        fetchUserAndQuestion={fetchUserAndQuestion}
+        fetchQuestionsForUser={fetchQuestionsForUser}
+        hiddenDivRef={hiddenDivRef}
+        profileQuestions
+      />
     </div>
   );
 }

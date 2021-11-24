@@ -6,6 +6,8 @@ import ChatIcon from "@mui/icons-material/Chat";
 import { useHistory } from "react-router";
 import { voteQuestion } from "./../configs/networkManager";
 import { useStateValue } from "./../context/StateProvider";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { deletePost } from "./../configs/networkManager";
 
 // this will be every single question
 function Question({
@@ -19,6 +21,7 @@ function Question({
   dateOfPosting,
   renderFull,
   fetchUserAndQuestion,
+  fetchQuestionsForUser,
 }) {
   const [upVoteState, setupVoteState] = useState(upvotes);
 
@@ -52,6 +55,7 @@ function Question({
       setupVoteState((_) => updatedPost.upVotes.length);
       // console.log("printing upvotes:", upVoteState);
       fetchUserAndQuestion(true);
+      fetchQuestionsForUser && fetchQuestionsForUser(user.email, true);
       upVoteRef.current.style.color = "green";
       alert("post liked 👍");
     } catch (er) {
@@ -67,6 +71,7 @@ function Question({
       // downvotes += 1;
       setdownVoteState((_) => updatedPost.downVotes.length);
       fetchUserAndQuestion(true);
+      fetchQuestionsForUser && fetchQuestionsForUser(user.email, true);
       // make it green
       downVoteRef.current.style.color = "red";
       // console.log();
@@ -76,7 +81,12 @@ function Question({
       console.log(er);
     }
   };
-
+  const deletePostClicked = async () => {
+    console.log("deleting...");
+    await deletePost(id, token);
+    fetchUserAndQuestion(true);
+    fetchQuestionsForUser && fetchQuestionsForUser(user.email, true);
+  };
   return (
     <div className="question">
       <div className="question__left">
@@ -93,14 +103,22 @@ function Question({
       </div>
       <div className="question__right">
         <div className="question__right__top">
-          <h1
-            onClick={() => {
-              redirectToQuestion();
-            }}
-          >
-            {renderFull ? title : title.slice(0, 110)}...
+          <h1>
+            <h1
+              onClick={() => {
+                redirectToQuestion();
+              }}
+            >
+              {renderFull ? title : title.slice(0, 110) + "..."}
+            </h1>{" "}
+            {user?.email === username ? (
+              <DeleteIcon
+                className="mui_deleteIcon"
+                onClick={deletePostClicked}
+              />
+            ) : null}
           </h1>
-          <p>{renderFull ? body : body.slice(0, 340)}...</p>
+          <p>{renderFull ? body : body.slice(0, 340) + "..."}</p>
         </div>
         <div className="question__right__bottom">
           <p>{username}</p>
