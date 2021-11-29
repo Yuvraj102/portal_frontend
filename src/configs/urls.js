@@ -1,28 +1,32 @@
 const productionBaseLink = "https://portalbackend44.herokuapp.com/api/v1/";
 const developmentBaseLink = "http://localhost:5000/api/v1/";
-let basleLink = productionBaseLink;
+let baseLink = productionBaseLink;
+const productionServerLink = "https://portalbackend44.herokuapp.com/";
+const developmentServerLink = "http://localhost:5000/";
+let serverLink = productionServerLink;
 if (process.env.NODE_ENV === "development") {
-  basleLink = developmentBaseLink;
+  baseLink = developmentBaseLink;
+  serverLink = developmentServerLink;
 }
+export const serverLinkUrl = serverLink;
+export const getloginUrlLink = baseLink + "user/getGoogleLink";
 
-export const getloginUrlLink = basleLink + "user/getGoogleLink";
+export const getAllQuestionsLink = baseLink + "question/getAllQuestions";
 
-export const getAllQuestionsLink = basleLink + "question/getAllQuestions";
-
-export const getUserFromTokenLink = basleLink + "user/getMe";
+export const getUserFromTokenLink = baseLink + "user/getMe";
 
 // add /id to param
-export const getCommentsOnPostLink = basleLink + "comment/getCommentsForPost/";
+export const getCommentsOnPostLink = baseLink + "comment/getCommentsForPost/";
 
-export const getCreatePostLink = basleLink + "comment/createComment";
+export const getCreatePostLink = baseLink + "comment/createComment";
 
-export const getUpdateUserLink = basleLink + "user/updateUser";
+export const getUpdateUserLink = baseLink + "user/updateUser";
 
-export const getCreateQuestionLink = basleLink + "question/create";
+export const getCreateQuestionLink = baseLink + "question/create";
 
-export const getVoteLink = basleLink + "question/votePost";
+export const getVoteLink = baseLink + "question/votePost";
 // add /email to param
 export const getQuestionsForUserLink =
-  basleLink + "question/getQuestionsForUser/";
+  baseLink + "question/getQuestionsForUser/";
 // add /postID to param
-export const getDeletePostLink = basleLink + "question/deletePost/";
+export const getDeletePostLink = baseLink + "question/deletePost/";

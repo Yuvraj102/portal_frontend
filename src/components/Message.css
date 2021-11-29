@@ -1,0 +1,9 @@
+.message {
+  padding: 10px;
+}
+.message p {
+  font-style: italic;
+}
+.message h4 {
+  text-decoration: underline;
+}

@@ -28,3 +28,12 @@
 .Navbar > a {
   text-decoration: none;
 }
+.chat_icon {
+  color: dimgray;
+  border: 1px solid lightgray;
+  padding: 5px;
+  height: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 3px 3px rgb(0 0 0 / 40%);
+  margin-right: 5px !important;
+}

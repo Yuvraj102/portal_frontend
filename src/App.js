@@ -18,6 +18,7 @@ import {
 } from "./configs/urls";
 // import {  } from "./configs/urls";
 import { getAllQuestions } from "./configs/networkManager";
+import Chat from "./Chat";
 
 function App() {
   const [state, dispatch] = useStateValue();
@@ -124,11 +125,15 @@ function App() {
               <h1>Create Question</h1>
               <CreateQuestion />
             </Route>
+            <Route path="/chat" exact>
+              <Chat />
+            </Route>
             <Route path="/question/:questionId" exact>
               <Reply fetchUserAndQuestion={fetchUserAndQuestion} />
             </Route>
           </>
         )}
+
         <Route path="*" exact component={PageNotFound} />
       </Switch>
       <div ref={hiddenDivRef}></div>
