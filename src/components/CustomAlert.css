@@ -1,0 +1,26 @@
+.customAlert {
+  background-color: lightgreen;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  animation: 2s linear fadeAnimation;
+  /* animation-fill-mode: forwards; */
+  visibility: hidden;
+}
+.customAlert > h3 > span {
+  font-style: italic;
+  font-weight: 400;
+  font-size: medium;
+}
+@keyframes fadeAnimation {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
