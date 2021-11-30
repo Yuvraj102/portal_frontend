@@ -34,7 +34,6 @@ function Chat() {
         ...prevState,
         <Message from={data?.sender} message={data?.messageText} />,
       ]);
-      console.log("username of sender:", user?.username);
     });
     socket.on("new_conn", (data) => {
       // alert("new joined");
