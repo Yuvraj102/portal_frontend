@@ -16,7 +16,7 @@ function Chat() {
   const handler = (event) => {
     event.preventDefault();
     const messageText = event.target.messageField.value;
-    socket?.emit("message", { messageText });
+    socket?.emit("message", { sender: user?.username, messageText });
 
     event.target.messageField.value = "";
   };
@@ -32,8 +32,9 @@ function Chat() {
     socket.on("message", (data) => {
       setMessages((prevState) => [
         ...prevState,
-        <Message from={user?.username} message={data?.messageText} />,
+        <Message from={data?.sender} message={data?.messageText} />,
       ]);
+      console.log("username of sender:", user?.username);
     });
     socket.on("new_conn", (data) => {
       // alert("new joined");
