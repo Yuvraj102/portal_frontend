@@ -12,3 +12,6 @@
   font-style: italic;
   color: gray;
 }
+.comment > p {
+  word-break: break-word;
+}
