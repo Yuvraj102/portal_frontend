@@ -43,6 +43,7 @@
   justify-content: space-around;
   padding: 7px;
   border: 1px solid lightgray;
+  word-break: break-word;
   /* color: gray; */
 }
 .question__right__bottom > p {
@@ -59,5 +60,7 @@
 @media only screen and (max-width: 400px) {
   .question__right__bottom {
     flex-direction: column;
+    border: none;
+    border-top: 1px solid lightgray;
   }
 }
