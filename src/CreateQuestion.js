@@ -18,7 +18,7 @@ function CreateQuestion({ reply, postId, setComments }) {
 
     if (titleValue.length >= 200) {
       // show warning comp
-      console.log("greater");
+      // console.log("greater");
       submitBtn.current.disabled = true;
     } else {
       submitBtn.current.disabled = false;
@@ -55,7 +55,7 @@ function CreateQuestion({ reply, postId, setComments }) {
           bodyValue,
           token
         );
-        console.log("requested create post:", titleValue, bodyValue);
+        // console.log("requested create post:", titleValue, bodyValue);
         if (createQuestion) {
           // add to questions state
           dispatch({

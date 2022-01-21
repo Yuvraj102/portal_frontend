@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./RegisterLogin.css";
 import loginSvg from "./assets/login.svg";
 import google from "./assets/google.svg";
@@ -10,6 +10,7 @@ function RegisterLogin({ loginUrl }) {
   const history = useHistory();
   const [state, dispatch] = useStateValue();
   const { search } = useLocation();
+
   const checkToken = () => {
     let query = search.slice(1);
     const queryArgs = search.split("&");
@@ -30,6 +31,7 @@ function RegisterLogin({ loginUrl }) {
   useEffect(() => {
     checkToken();
   }, []);
+
   return (
     <div className="registerLogin">
       <div className="registerLogin_box">
@@ -38,7 +40,7 @@ function RegisterLogin({ loginUrl }) {
         </div>
         <div className="registerLogin_box_cred">
           <h1>WELCOME GUYS!</h1>
-          <a href={loginUrl ? loginUrl : ""}>
+          <a href={loginUrl} className={`${loginUrl ? "" : "disable_anchor"}`}>
             <img src={google} /> Sign in with google
           </a>
           <p>

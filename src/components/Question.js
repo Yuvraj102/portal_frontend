@@ -82,7 +82,7 @@ function Question({
     }
   };
   const deletePostClicked = async () => {
-    console.log("deleting...");
+    // console.log("deleting...");
     await deletePost(id, token);
     fetchUserAndQuestion(true);
     fetchQuestionsForUser && fetchQuestionsForUser(user.email, true);

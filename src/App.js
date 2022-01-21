@@ -48,7 +48,7 @@ function App() {
                 questions: questions,
               });
 
-              console.log(" fetching..");
+              // console.log(" fetching..");
             }
           } else {
             alert("user not found make sure u login again");
@@ -59,7 +59,7 @@ function App() {
           console.log(err);
         });
     } else {
-      console.log("not fetching");
+      // console.log("not fetching");
     }
   };
   // get questions for a user
