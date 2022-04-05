@@ -37,3 +37,20 @@
   font-style: italic;
   display: block;
 }
+.uploadNotes__box > * {
+  margin: 0 1rem;
+  padding: 5px 10px;
+}
+.notes__title {
+  min-width: 300px;
+}
+.uploadNotes__btn {
+  border: 1px solid red;
+  background-color: crimson;
+  color: white;
+  font-style: bold;
+  font-size: 20px;
+  border-radius: 10px;
+  display: block;
+  margin: auto;
+}

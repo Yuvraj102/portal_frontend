@@ -6,7 +6,7 @@ import { useStateValue } from "./context/StateProvider";
 import { updateUserInDb } from "./configs/networkManager";
 import { useHistory } from "react-router-dom";
 import Questions from "./Questions";
-
+import { Link } from "react-router-dom";
 function Profile({
   hiddenDivRef,
   questionstitle,
@@ -62,7 +62,7 @@ function Profile({
           { bio, college, department, designation },
           token
         );
-        // console.log("updated user:", updatedUser);
+        // console.log(updatedUser);
         if (updatedUser) {
           // user successfully updated send dispatch
           dispatch({
@@ -93,6 +93,14 @@ function Profile({
       <button ref={saveBtn} className="editButton" hidden onClick={saveClicked}>
         save
       </button>
+      {user?.designation == "teacher" && (
+        <Link
+          className="editButton"
+          to={user ? `/${user?.email}/notes` : "/signin"}
+        >
+          my notes
+        </Link>
+      )}
       {shwWarning && (
         <WarningComponent text="check if bio not greater than 200 characters, collegeName not greater than 50 characters,dept not greater than 30 characters" />
       )}

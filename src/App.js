@@ -11,6 +11,9 @@ import NavBar from "./components/NavBar";
 import CreateQuestion from "./CreateQuestion";
 import Reply from "./Reply";
 import axios from "./configs/axiosConfig";
+import Teachers from "./Teachers";
+import Notes from "./Notes";
+
 import {
   getloginUrlLink,
   getQuestionsForUserLink,
@@ -104,6 +107,13 @@ function App() {
         <Route path="/signin" exact>
           <RegisterLogin loginUrl={loginUrl} />
         </Route>
+        <Route path="/teachers" exact>
+          <Teachers />
+        </Route>
+        <Route path="/:id/notes" exact>
+          <Notes />
+        </Route>
+
         {state.token && (
           <>
             <NavBar />

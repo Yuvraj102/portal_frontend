@@ -1,0 +1,26 @@
+.teachers {
+  background-image: linear-gradient(to right bottom, #68e5fa, #61a9f8, #6ef9e8);
+  min-height: 100vh;
+  min-width: 100vw;
+}
+.teachers > header {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  justify-content: space-around;
+}
+.teachers__cross {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  flex: 0.1;
+}
+.teachers > header input {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 8px;
+  flex: 0.9;
+  font-size: 16px;
+}

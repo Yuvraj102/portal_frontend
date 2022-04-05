@@ -20,13 +20,22 @@ export const getCommentsOnPostLink = baseLink + "comment/getCommentsForPost/";
 
 export const getCreatePostLink = baseLink + "comment/createComment";
 
+export const getUploadFileLink = baseLink + "question/uploadFile";
+
 export const getUpdateUserLink = baseLink + "user/updateUser";
 
 export const getCreateQuestionLink = baseLink + "question/create";
 
 export const getVoteLink = baseLink + "question/votePost";
+
+export const getTeachersLink = baseLink + "user/getTeachers";
+export const getTeacherWithEmailLink = baseLink + "user/getTeacherWithEmail";
 // add /email to param
 export const getQuestionsForUserLink =
   baseLink + "question/getQuestionsForUser/";
 // add /postID to param
 export const getDeletePostLink = baseLink + "question/deletePost/";
+
+export const getNotesLink = baseLink + "user/getNotes";
+
+export const getDeleteNoteLink = baseLink + "user/deleteNote";

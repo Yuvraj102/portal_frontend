@@ -1,0 +1,5 @@
+.notes {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-image: linear-gradient(to right bottom, #68e5fa, #61a9f8, #6ef9e8);
+}

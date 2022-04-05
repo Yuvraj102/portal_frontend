@@ -4,6 +4,7 @@ import "./Questions.css";
 import Question from "./components/Question";
 import ReplayIcon from "@mui/icons-material/Replay";
 import { useStateValue } from "./context/StateProvider";
+import { Link } from "react-router-dom";
 
 function Questions({
   questions,
@@ -24,6 +25,13 @@ function Questions({
       <h1>
         {questionstitle}{" "}
         {/*profileQuestions ? null :*/ <ReplayIcon onClick={replayClicked} />}
+      </h1>
+      <h1>
+        {
+          <Link to={"/teachers"} className="teachers__link">
+            Teachers
+          </Link>
+        }
       </h1>
       {/* {console.log("in questions comp", questions[0]?.upVotes.length)} */}
       {questions.map((el) => (

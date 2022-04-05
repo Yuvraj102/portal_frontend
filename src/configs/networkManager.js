@@ -7,6 +7,11 @@ import {
   getCreateQuestionLink,
   getVoteLink,
   getDeletePostLink,
+  getUploadFileLink,
+  getTeachersLink,
+  getTeacherWithEmailLink,
+  getNotesLink,
+  getDeleteNoteLink,
 } from "./urls";
 
 export const getAllQuestions = async (token) => {
@@ -56,7 +61,61 @@ export const createComment = async (postId, body, token) => {
     return null;
   }
 };
+export const uploadFile = async (title, file, token) => {
+  let formData = new FormData();
+  formData.append("title", title);
+  formData.append("file", file);
+  formData.append("token", token);
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
+      },
+      data: formData,
+      url: getUploadFileLink,
+    };
 
+    const createdNote = await axios(options);
+
+    return createdNote.data;
+  } catch (err) {
+    alert("err uploading notes");
+    console.log(err.response.data);
+    return null;
+  }
+};
+
+export const getTeachers = async (query = "") => {
+  const options = {
+    method: "GET",
+    url: getTeachersLink + `?name=${query}`,
+  };
+
+  try {
+    const teachersData = await axios(options);
+    return teachersData.data;
+  } catch (err) {
+    console.log(err.response.data);
+    return null;
+  }
+};
+// get one teacher with email
+export const getTeacherByEmail = async (email) => {
+  const options = {
+    method: "GET",
+    url: getTeacherWithEmailLink + `?email=${email}`,
+  };
+
+  try {
+    const teachersData = await axios(options);
+    return teachersData.data;
+  } catch (err) {
+    console.log(err.response.data);
+    return null;
+  }
+};
 export const updateUserInDb = async (data, token) => {
   const options = {
     method: "PATCH",
@@ -155,5 +214,41 @@ export const deletePost = async (postId, token) => {
       alert("err deleting post axios");
       console.log(err);
     }
+  }
+};
+
+// get notes for a user with email
+export const getNotes = async (email) => {
+  const options = {
+    method: "GET",
+    url: getNotesLink + `?email=${email}`,
+  };
+
+  try {
+    const notesData = await axios(options);
+    return notesData.data;
+  } catch (err) {
+    console.log(err.response.data);
+    return null;
+  }
+};
+// delete notes
+
+export const deleteNote = async (id, token) => {
+  const options = {
+    method: "GET",
+    url: getDeleteNoteLink + `?id=${id}`,
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const notesData = await axios(options);
+    return notesData;
+  } catch (err) {
+    console.log(err.response.data);
+    return null;
   }
 };
