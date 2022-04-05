@@ -59,10 +59,10 @@ function Profile({
       let department = deptTag.current.value || user.department || "all";
       let designation =
         selectTag.current.value || user.designation || "student";
-      console.log("bf up", bio, college, department, designation);
+
       if (bio && college && department && designation) {
         // send update request
-        console.log("in up", bio, college, department, designation);
+
         const updatedUser = await updateUserInDb(
           { bio, college, department, designation },
           token
@@ -70,7 +70,7 @@ function Profile({
         // console.log(updatedUser);
         if (updatedUser) {
           // user successfully updated send dispatch
-          console.log("af up", bio, college, department, designation);
+
           dispatch({
             type: "USER_FETCHED",
             user: updatedUser,
