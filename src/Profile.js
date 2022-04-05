@@ -52,10 +52,10 @@ function Profile({
       deptTag.current.readOnly = true;
       textAreaTag.current.readOnly = true;
       // get values
-      let bio = textAreaTag.current.value;
-      let college = collegeTag.current.value;
-      let department = deptTag.current.value;
-      let designation = selectTag.current.value;
+      let bio = textAreaTag.current.value || "no bio at the moment..";
+      let college = collegeTag.current.value || "not available at the time";
+      let department = deptTag.current.value || "all";
+      let designation = selectTag.current.value || "student";
       if (bio && college && department && designation) {
         // send update request
         const updatedUser = await updateUserInDb(
