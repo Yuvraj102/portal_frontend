@@ -8,7 +8,7 @@ function Note({ note, setShowSpinner, refetchNotesData }) {
   const history = useHistory();
   const [{ token, user }, dispatch] = useStateValue();
   const deleteNotePressed = async () => {
-    const consent = prompt("Do you wish to delete the note?");
+    const consent = confirm("Do you wish to delete the note?");
     if (!consent) {
       return;
     }
