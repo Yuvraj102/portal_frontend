@@ -52,10 +52,13 @@ function Profile({
       deptTag.current.readOnly = true;
       textAreaTag.current.readOnly = true;
       // get values
-      let bio = textAreaTag.current.value || "no bio at the moment..";
-      let college = collegeTag.current.value || "not available at the time";
-      let department = deptTag.current.value || "all";
-      let designation = selectTag.current.value || "student";
+      let bio =
+        textAreaTag.current.value || user.bio || "no bio at the moment..";
+      let college =
+        collegeTag.current.value || user.college || "not available at the time";
+      let department = deptTag.current.value || user.department || "all";
+      let designation =
+        selectTag.current.value || user.designation || "student";
       if (bio && college && department && designation) {
         // send update request
         const updatedUser = await updateUserInDb(
