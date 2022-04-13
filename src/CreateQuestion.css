@@ -44,6 +44,11 @@
 .notes__title {
   min-width: 300px;
 }
+@media (max-width:500px) {
+.notes__title {
+  min-width: max-content;
+}
+}
 .uploadNotes__btn {
   border: 1px solid red;
   background-color: crimson;
