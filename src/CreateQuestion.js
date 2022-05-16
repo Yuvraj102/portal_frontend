@@ -176,7 +176,7 @@ function CreateQuestion({ reply, postId, setComments }) {
               placeholder="Upload Notes"
               name="notes__file"
               ref={fileUploadRef}
-              accept="application/pdf"
+              accept="application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/msword, application/vnd.openxmlformats-officedocument.presentationml.presentation"
               onInput={handleFileChange}
               type="file"
             ></input>

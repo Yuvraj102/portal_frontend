@@ -40,13 +40,15 @@ function Notes() {
       {teacher && <SingleTeacher teacher={teacher} setLinkFalse />}
       <div className="notes__note">
         {notes &&
-          notes.map((el) => (
-            <Note
-              note={el}
-              setShowSpinner={setShowSpinner}
-              refetchNotesData={refetchNotesData}
-            />
-          ))}
+          notes
+            .sort()
+            .map((el) => (
+              <Note
+                note={el}
+                setShowSpinner={setShowSpinner}
+                refetchNotesData={refetchNotesData}
+              />
+            ))}
       </div>
       {showSpinner && <Spinner />}
     </div>
