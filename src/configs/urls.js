@@ -1,4 +1,4 @@
-const productionBaseLink = "https://portalbackend-allc.onrender.com/api/v1";
+const productionBaseLink = "https://portalbackend-allc.onrender.com/api/v1/";
 const developmentBaseLink = "http://localhost:5000/api/v1/";
 let baseLink = productionBaseLink;
 const productionServerLink = "https://portalbackend-allc.onrender.com/";
