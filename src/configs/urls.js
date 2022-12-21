@@ -1,7 +1,7 @@
-const productionBaseLink = "https://portalbackend44.herokuapp.com/api/v1/";
+const productionBaseLink = "https://portalbackend-allc.onrender.com/api/v1";
 const developmentBaseLink = "http://localhost:5000/api/v1/";
 let baseLink = productionBaseLink;
-const productionServerLink = "https://portalbackend44.herokuapp.com/";
+const productionServerLink = "https://portalbackend-allc.onrender.com/";
 const developmentServerLink = "http://localhost:5000/";
 let serverLink = productionServerLink;
 if (process.env.NODE_ENV === "development") {
